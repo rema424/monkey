@@ -52,3 +52,16 @@ const (
 	// LET ...
 	LET = "LET"
 )
+
+var keywords = map[string]MTokenType{
+	"fn":  FUNCTION,
+	"let": LET,
+}
+
+// LookupIdent ...
+func LookupIdent(ident string) MTokenType {
+	if tok, ok := keywords[ident]; ok {
+		return tok
+	}
+	return IDENT
+}
